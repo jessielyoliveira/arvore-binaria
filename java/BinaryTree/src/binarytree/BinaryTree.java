@@ -9,11 +9,26 @@ package binarytree;
  *
  * @author jessiely
  */
-public class BinaryTree {
+public class BinaryTree<T> {
     
     private Node root;
     
+    public Node insertNode(T data) {
+        return this.insertNode(new Node(data), root);
+    }
     
+    private Node insertNode(Node child, Node parent) {
+        if(root == null) {
+            root = child;
+            return root;
+        }
+        
+        if(parent != null) {
+            if(child.getData() < parent.getData()){
+                parent.setLeftChild(this.insertNode(child, parent.getLeftChild()));
+            }
+        }
+    }
 
     /**
      * @param args the command line arguments
