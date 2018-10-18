@@ -1,16 +1,26 @@
 #ifndef NODE_H
+#define NODE_H
 
-/* Fazer com int, depois generalizar para T */
+#include <memory>
+using std::unique_ptr;
 
 class Node {
-	private:
-		int content;
-		int * left;
-		int * right;
-	public:
-		Node();
-		~Node();
+private:
+	int content;
+	Node * leftChild;
+	Node * rightChild;
+
+public:
+	Node();
+	~Node();
+
 };
 
-#define NODE_H
+
+// Inserção
+
+
+// Remoção
+// Busca (pré, pós, em) ordem
+
 #endif

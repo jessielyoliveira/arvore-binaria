@@ -1,4 +1,4 @@
-#include "node.h"
+#include "binaryTree.h"
 int main(int argc, char const *argv[])
 {
 	/* code */

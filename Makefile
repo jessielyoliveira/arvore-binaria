@@ -25,22 +25,19 @@ CFLAGS=-Wall -pedantic -ansi -std=c++11 -I. -I$(INC_DIR)
 .PHONY: all init clean doxy debug doc
 
 
-all: init node
+all: init arvoreBinaria
 debug: CFLAGS += -g -O0
-debug: node
+debug: arvoreBinaria
 
 init:
 	@mkdir -p $(BIN_DIR)/
 	@mkdir -p $(OBJ_DIR)/
 
-node: $(OBJ_DIR)/main.o $(OBJ_DIR)/node.o 
+arvoreBinaria: $(OBJ_DIR)/main.o 
 	$(CC) $(CFLAGS) -o $(BIN_DIR)/$@ $^
 	@echo "Compilação concluída!"
 
-$(OBJ_DIR)/node.o: $(SRC_DIR)/node.cpp $(INC_DIR)/node.h
-	$(CC) -c $(CFLAGS) -o $@ $<
-
-$(OBJ_DIR)/main.o: $(SRC_DIR)/main.cpp 
+$(OBJ_DIR)/main.o: $(SRC_DIR)/main.cpp $(INC_DIR)/node.h $(INC_DIR)/binaryTree.h
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 
